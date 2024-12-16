@@ -1,7 +1,7 @@
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "10.0.0.0/24"
 }
 
 variable "allowed_http_ips" {
@@ -26,4 +26,13 @@ variable "environment" {
   description = "Environment tag (e.g., dev, staging, prod)"
   type        = string
   default     = "prod"
+}
+
+variable "tags" {
+  description = "Tags to apply to all resources"
+  type        = map(string)
+  default     = {
+    Environment = "prod"
+    Project = "aws-ecs-iac"
+  }
 }
